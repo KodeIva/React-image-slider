@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import {RxDotFilled} from 'react-icons/rx'
 
@@ -30,6 +30,7 @@ function App() {
 
   const[currentImage, setCurrentImage] = useState(0)
 
+
   function prevImage() {
    if(currentImage === 0) {
     setCurrentImage(images.length - 1)
@@ -46,6 +47,13 @@ function App() {
    }
   }
 
+  useEffect(() => {
+    let imageInterval = setInterval(() => {
+      nextImage()
+    },4000)
+    return () => clearInterval(imageInterval)
+  },[currentImage])
+
   return (
     <div className=" w-[100%] h-[100vh] flex flex-col justify-center items-center bg-slate-300">
      <div className="w-[90%] h-[auto] md:w-[80%] lg:w-[60%]">
@@ -54,8 +62,10 @@ function App() {
 
      <div className='flex'>
       {images.map((image,index) => (
-         <div >
+         
+         <div  key={index}>
           <RxDotFilled 
+            
             onClick={() => setCurrentImage(index)}
             className="text-white hover:text-slate-500 text-2xl my-2"
          />
