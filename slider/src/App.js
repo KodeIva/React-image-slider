@@ -30,21 +30,21 @@ function App() {
 
   const[currentImage, setCurrentImage] = useState(0)
 
-function prevImage() {
- if(currentImage === 0) {
-  setCurrentImage(images.length - 1)
- }else{
-  setCurrentImage(currentImage - 1)
- }
-}
+  function prevImage() {
+   if(currentImage === 0) {
+    setCurrentImage(images.length - 1)
+   }else{
+    setCurrentImage(currentImage - 1)
+   }
+  }
 
-function nextImage() {
- if(currentImage === images.length - 1) {
-  setCurrentImage(0)
- }else{
-  setCurrentImage(currentImage + 1)
- }
-}
+  function nextImage() {
+   if(currentImage === images.length - 1) {
+    setCurrentImage(0)
+   }else{
+    setCurrentImage(currentImage + 1)
+   }
+  }
 
   return (
     <div className=" w-[100%] h-[100vh] flex flex-col justify-center items-center bg-slate-300">
@@ -52,17 +52,27 @@ function nextImage() {
       <img className="w-[100%] h-[auto] " src={images[currentImage].url} alt="" />
      </div>
 
-
+     <div className='flex'>
+      {images.map((image,index) => (
+         <div >
+          <RxDotFilled 
+            onClick={() => setCurrentImage(index)}
+            className="text-white hover:text-slate-500 text-2xl my-2"
+         />
+         </div> 
+      )
+      )}
+     </div>
  
      <div className='flex justify-between w-[70%] lg:w-[50%] '>
       <div className='p-3 ' type='button' onClick={prevImage}>
-         <FiChevronLeft className='text-4xl text-white'/>
+         <FiChevronLeft className='text-4xl text-white hover:text-slate-500'/>
       </div>
       <div className='w-[200px] text-center h-6 '>
         <p className='text-white m-4 text-2xl '>{images[currentImage].name}</p>
       </div>
       <div className='p-3 ' type='button' onClick={nextImage}>
-        <FiChevronRight className='text-4xl text-white' /></div>
+        <FiChevronRight className='text-4xl text-white hover:text-slate-500' /></div>
       </div>
 
     </div>
