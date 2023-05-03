@@ -19,7 +19,7 @@ function App() {
     },
 
     {
-      url: 'https://images.unsplash.com/photo-1491591462767-3b91b2a19487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+      url: 'https://images.unsplash.com/photo-1584963237901-8ff959b9b4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM1fHxzcHJpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
       name: 'Yellow Flowers'
     },
     {
@@ -29,7 +29,6 @@ function App() {
   ];
 
   const[currentImage, setCurrentImage] = useState(0)
-
 
   function prevImage() {
    if(currentImage === 0) {
@@ -56,18 +55,17 @@ function App() {
 
   return (
     <div className=" w-[100%] h-[100vh] flex flex-col justify-center items-center bg-slate-300">
+     <h1 className='text-white m-5 text-4xl font-medium [text-shadow:_0_2px_0_darkgray]'>Spring Gallery</h1>
      <div className="w-[90%] h-[auto] md:w-[80%] lg:w-[60%]">
       <img className="w-[100%] h-[auto] " src={images[currentImage].url} alt="" />
      </div>
 
      <div className='flex'>
       {images.map((image,index) => (
-         
          <div  key={index}>
           <RxDotFilled 
-            
             onClick={() => setCurrentImage(index)}
-            className="text-white hover:text-slate-500 text-2xl my-2"
+            className="text-white hover:text-slate-500 text-2xl my-2 "
          />
          </div> 
       )
@@ -79,7 +77,7 @@ function App() {
          <FiChevronLeft className='text-4xl text-white hover:text-slate-500'/>
       </div>
       <div className='w-[200px] text-center h-6 '>
-        <p className='text-white m-4 text-2xl '>{images[currentImage].name}</p>
+        <p className='text-white m-4 text-2xl [text-shadow:_0_1px_0_darkgray] '>{images[currentImage].name}</p>
       </div>
       <div className='p-3 ' type='button' onClick={nextImage}>
         <FiChevronRight className='text-4xl text-white hover:text-slate-500' /></div>
